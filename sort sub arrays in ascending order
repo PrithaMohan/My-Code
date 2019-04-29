@@ -1,0 +1,42 @@
+Input:
+4                //number of sub arrays                                                                                                                                         
+3 4 2 5          //length of each sub arrays                                                                                                                   
+5 2 3            //elements of sub array 1                                                                                                                              
+7 3 9 4          //elements of sub array 2                                                                                                     
+0 2              //elements of sub array 3                                                                                                                              
+6 8 3 5 1        //elements of sub array 4                                                                                                                             
+Output:
+0 1 2 2 3 3 3 4 5 5 6 7 8 9
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+		//Your Code Here
+		Scanner ob=new Scanner(System.in);
+		int n=ob.nextInt();
+		int sum=0;
+	for(int i=0;i<n;i++)
+	{
+	    int v=ob.nextInt();
+	    sum=sum+v;
+	}ob.nextLine();
+		int a[]=new int[sum];
+		int c=0;
+		for(int i=0;i<n;i++)
+		{
+		    String s[]=ob.nextLine().split(" ");
+		    for(int j=0;j<s.length;j++)
+		    {
+		        a[c]=Integer.parseInt(s[j]);
+		        ++c;
+		    }
+		}
+		Arrays.sort(a);
+		for(int i=0;i<a.length;i++)
+		{
+		    System.out.print(a[i]+" ");
+		}
+
+	}
+}
