@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include <stdlib.h>
+void space_(int n)
+{
+    while(n-- >0 )
+    {
+        printf("-");
+    }
+}
+int main()
+{
+int n;
+char ch;
+scanf("%d %c",&n,&ch);
+space_(n-1);
+printf("%c\n",ch);
+space_(n-2);
+printf("%c%c%c",ch,ch,ch);
+int k=n-3;
+int l=1;
+printf("\n");
+for(int i=1;i<=n-2;i++)
+{
+    space_(k);
+    --k;
+    printf("%c",ch);
+    space_(l);
+    printf("%c",ch);
+    space_(l);
+    printf("%c",ch);
+    ++l;
+    printf("\n");
+}
+k=n-1;
+for(int i=1;i<=n;i++)
+{
+    space_(k);
+    printf("%c",ch);
+    printf("\n");
+}
+k=0;
+
+for(int i=1;i<=n-2;i++)
+{space_(k);
+    printf("%c",ch);
+    space_(--l);
+    printf("%c",ch);
+    space_(l);
+    printf("%c",ch);
+    printf("\n");
+    ++k;
+    
+}
+space_(n-2);
+printf("%c%c%c",ch,ch,ch);
+printf("\n");
+space_(n-1);
+printf("%c",ch);
+
+}
