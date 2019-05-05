@@ -1,0 +1,71 @@
+/**********************************************
+An odd length string S of length L is passed as the input.
+The program must print the string S as two diagonals as shown in the example Input/Output below.
+Input Format: 
+The first line will contain S.
+Output Format:
+L lines will contain the pattern as shown in the example Input/Output below.
+Boundary Conditions:
+Length of S is from 3 to 51.
+Example Input/Output 1:
+Input:
+cry
+Output:
+c y 
+ r 
+c y
+Example Input/Output 2:
+Input:
+tiger
+Output:
+t   r
+ i e
+  g 
+ i e
+t   r
+
+*********************************************/
+#include<stdio.h>
+#include <stdlib.h>
+void sp(int i)
+{
+    while(i-- >0)
+    {
+        printf(" ");
+    }
+}
+int main()
+{
+char s[51];
+scanf("%s",s);
+int l=strlen(s)-1;
+int left=0,space=l-1,k=0;
+
+for(int i=0;i<l/2;i++)
+{   
+    sp(left);
+    printf("%c",s[i]);
+    sp(space);
+    printf("%c",s[l-i]);
+    ++k;++left;
+    space=space-2;
+    printf("\n");
+}
+sp(left);
+printf("%c",s[l/2]);
+int start=l/2-1,end=l/2+1;
+space=1;
+printf("\n");
+for(int i=0;i<l/2;i++)
+{
+    sp(--left);
+    printf("%c",s[start--]);
+    sp(space);
+    printf("%c",s[end++]);
+    ++space;
+    printf("\n");
+    
+}
+
+
+}
