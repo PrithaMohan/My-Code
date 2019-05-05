@@ -1,0 +1,35 @@
+/********
+input n1,b1,n2,b2
+sample input 1:
+10 5
+20 6
+sample output 2:
+7
+
+sample input 2:
+35 10
+40 8
+sample output 2:
+13
+***********/
+
+#include <stdio.h>
+
+int main()
+{
+  int n1,b1,n2,b2,r=0;
+  scanf("%d %d %d %d",&n1,&b1,&n2,&b2);
+  while(n1>0)
+  {
+      r=r+(n1%b1);
+      n1=n1/b1;
+  }
+  while(n2>0)
+  {
+      r=r+(n2%b2);
+      n2=n2/b2;
+  }
+  printf("%d",r);
+
+    return 0;
+}
