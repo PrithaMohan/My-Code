@@ -1,0 +1,132 @@
+/**************************************************************************8
+Dynamic V Pattern 
+The program must accept two integer(X,Y) and a character CH as the input.The Program must print the desired output 
+as shown in the example input/output section.
+Boundary Condition(s):
+1<=X,Y<=1000
+input format:
+the first line contains the values of X,CH & Y separated by a space.
+output format:
+the list of lines containing the desired pattern as shown in the example input/output section.
+
+Example input 1:
+3 # 5                                                                          
+Example output 1:
+------#                                                                        
+-----#                                                                         
+#---#                                                                          
+-#-#                                                                           
+--#    
+
+Example input 2:
+7 @ 7
+Example output 2:
+@-----------@                                                                                                                                  
+-@---------@                                                                                                                                   
+--@-------@                                                                                                                                    
+---@-----@                                                                                                                                     
+----@---@                                                                                                                                      
+-----@-@                                                                                                                                       
+------@     
+
+Example input 3:
+10 * 4
+Example output 3:
+*                                                                                                                                              
+-*                                                                                                                                             
+--*                                                                                                                                            
+---*                                                                                                                                           
+----*                                                                                                                                          
+-----*                                                                                                                                         
+------*-----*                                                                                                                                  
+-------*---*                                                                                                                                   
+--------*-*                                                                                                                                    
+---------*     
+
+*******************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+void print_space(int i)
+{  
+    while(i>0)
+    {
+        printf("-");--i;
+    }
+}
+int main()
+{int x,y,l,space,left_space;
+char ch;
+scanf("%d %c %d",&x,&ch,&y);
+if(x<y)
+{
+     
+    l=y-x;
+    int k=y-l;
+    space=(x-1)+(x-2)+2;
+    for(int i=2;i<=l;i++)
+    {
+        space=space+1;
+    }
+    for(int i=0;i<l;i++)
+    {
+        print_space(space);
+        printf("%c",ch);
+        printf("\n");
+        --space;
+    }
+    space=(x-1)+(x-2);
+     left_space=0;
+    for(int i=1;i<k;i++)
+    {   
+        print_space(left_space);
+        ++left_space;
+        printf("%c",ch);
+        print_space(space);
+        printf("%c",ch);
+        space=space-2;
+        printf("\n");
+    }
+    print_space(left_space);
+    printf("%c",ch);
+}
+else if(x==y)
+{
+     left_space=0;
+     space=(y-1)+(y-2);
+     for(int i=1;i<y;i++)
+     {
+         print_space(left_space);
+         printf("%c",ch);
+         print_space(space);
+         printf("%c",ch);
+         space=space-2;
+         ++left_space;
+         printf("\n");
+     }
+     print_space(left_space);
+     printf("%c",ch);
+}
+else if(x>y)
+{
+    l=x-y;left_space=0;
+    for(int i=1;i<=l;i++)
+    {
+    print_space(left_space);
+    printf("%c",ch);
+    ++left_space;
+    printf("\n");
+    }space=(y-1)+(y-2);
+    for(int i=1;i<y;i++)
+    {   
+        print_space(left_space);
+        printf("%c",ch);
+        print_space(space);
+        printf("%c",ch);
+        ++left_space;
+        space=space-2;
+        printf("\n");
+    }
+    print_space(left_space);
+    printf("%c",ch);
+}
+}
