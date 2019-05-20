@@ -1,0 +1,61 @@
+/*******************************************************************************
+
+Characters Arrangements - A and B
+The program must accept a string S (containing only A and B) and an integer K as the input.
+The program must print yes if the characters can be arranged in the string such that there are at least
+K number of B present between every two A.
+Boundary Condition(s):
+1 <= Length of S <= 1000 1 <= K <= Length of S
+Input Format: 
+The first line contains S. 
+The second line contains K.
+Output Format: 
+The first line contains yes or no. 
+Example Input/Output 1:
+Input:
+ABABBABBBB 
+3
+Output:
+yes
+Explanation:
+The string ABABBABBBB can be arranged as ABBBABBBBA. Here there are at least three B present between all
+every A characters.
+Example Input/Output 2:
+Input:
+ABBA 
+3
+Output:
+no
+
+**************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+char str[1000];
+int k , start = 0, end = 0;
+scanf("%s %d",str , &k);
+end = strlen(str)-1;
+while( str[start] != 'A' && str[start] != '\0')
+{
+    ++start;
+}
+while( str[end] != 'A')
+{
+    --end;
+}
+int count = 0;
+while(start < end)
+{
+    if(str[start] == 'B')
+    ++count;
+    ++start;
+}
+if(count >= k)
+printf("yes");
+else
+printf("no");
+
+}
