@@ -1,0 +1,87 @@
+/************************************************************************************************8
+
+String with Most Consonants 
+The program must accept N string values as the input. 
+The program must print the string having maximum number of consonants among the N string values as the output.
+If more than one string have the maximum number of consonants then print the first occurring string. 
+Note:
+At least one string will contain consonant. 
+All the N string values contain only lowercase alphabets.
+Boundary Condition(s):
+1 <= N <= 100 1 <= Length of String <= 100 
+Input Format:
+The first line contains N. 
+The next N lines each contain a string value.
+Output Format:
+The first line contains the string having maximum number of consonants based on the above conditions.
+Example Input/Output 1:
+Input:
+3
+burger 
+sandwich
+pizza
+Output:
+sandwich
+Explantion:
+The string "burger" has 4 consonants. 
+The string "sandwich" has 6 consonants. The string "pizza" has 3 consonants. Here the string "sandwich" has the maximum
+number of consonants among the other string values.
+Hence the output is sandwich
+Example Input/Output 2:
+Input:
+5
+calcium
+sulphate
+sodium
+potassium
+cats
+Output:
+sulphate
+
+**************************************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+int consonant_count(char str[])
+{ int itr = 0 , count = 0;
+   while(str[itr] != '\0')
+   {
+   switch(str[itr])
+   {
+       case 'a':
+       case 'e':
+       case 'i':
+       case 'o':
+       case 'u':
+       case 'A':
+       case 'E':
+       case 'I':
+       case 'O':
+       case 'U':++count;
+       
+   }
+   ++itr;
+   }
+   return (itr-count);
+}
+int main()
+{
+    int num , max_itr=0 , max_cons=0;
+    char str[100][100];
+    scanf("%d",&num);
+    for(int itr = 0 ; itr < num ; itr++)
+    {
+        scanf("%s",str[itr]);
+         int temp = consonant_count(str[itr]);
+         if(temp > max_cons)
+         {
+             max_cons = temp;
+             max_itr = itr;
+         }
+        
+    }
+    printf("%s",str[max_itr]);
+    
+     
+
+}
