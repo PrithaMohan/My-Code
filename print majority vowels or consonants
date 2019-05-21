@@ -1,0 +1,91 @@
+/*******************************************************************************
+
+Print Majority - Vowel/Consonants 
+The program must accept a string S as the input.
+The program must print only the vowels in the string if the vowel count is larger than
+the consonant count. Else the program must print only the consonants in S as the output. 
+If both the counts are equal, then the program must print the string as it is without any change.
+Note: The alphabets must be printed in the same order as given in the input.
+Boundary Condition(s):
+1 <= Length of S <= 1000
+Input Format:
+The first line contains the string S.
+Output Format:
+The first line contains the string based on the given condition. 
+Example Input/Output 1:
+Input:
+takeout 
+Output:
+aeou
+Explanation:
+The number of vowels in takeout is 4.
+The number of consonants in takeout is 3.
+Hence the vowels are printed.
+Example Input/Output 2:
+Input:
+partyhall 
+Output:
+prtyhll
+
+*******************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+int is_vow(char ch)
+{
+    switch(ch)
+    {
+        case 'a':
+        case 'A':
+        case 'e':
+        case 'E':
+        case 'o':
+        case 'O':
+        case 'i':
+        case 'I':
+        case 'u':
+        case 'U':return 1;
+    }
+    return 0;
+}
+int vow_count(char s[])
+{
+    int ind = 0 , count = 0 ;
+    while(s[ind] != '\0')
+    {
+        if(is_vow(s[ind]))
+        ++count;
+        ++ind;
+    }
+    return count;
+}
+int main()
+{
+char str[1000];
+scanf("%[^\n]s",str);
+int vow = vow_count(str) ;
+int cons = strlen(str) - vow;
+if(vow == cons)
+printf("%s", str);
+else if(vow > cons)
+{
+    int ind = 0;
+    while(str[ind] != '\0')
+    {
+        if(is_vow(str[ind]))
+        printf("%c",str[ind]);
+        ++ind;
+    }
+}
+else if(vow < cons)
+{
+    int ind = 0;
+    while(str[ind] != '\0')
+    {
+        if(!is_vow(str[ind]))
+        printf("%c",str[ind]);
+        ++ind;
+    }
+}
+
+
+}
