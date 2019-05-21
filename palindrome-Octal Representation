@@ -1,0 +1,58 @@
+/*************************************************************************
+Palindrome - Octal Representation 
+The program must accept an integer N as the input.
+The program must print YES if the octal representation of N is a palindrome.
+Else the program must print NO as the output.
+Boundary Condition(s):
+1 <= N <= 10^9
+Input Format:
+The first line contains the value of N. 
+Output Format:
+The first line contains either YES or NO.
+Example Input/Output 1:
+Input:
+657 
+Output:
+YES
+Explanation:
+The octal representation of 657 is 1221.
+Here 1221 is a palindrome. Hence the output is YES
+Example Input/Output 2:
+Input:
+1699 
+Output:
+NO
+Explanation:
+The octal representation of 1699 is 3243. Here 3243 is not a palindrome. Hence the output is NO
+
+*************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+int pal(long long n)
+{
+    long long int r=0,o=n;
+    while(n > 0)
+    {
+        r=(r*10)+(n%10);
+        n/=10;
+    }
+    if(o==r)
+    return 1;
+    return 0;
+}
+int main()
+{
+long long int num , r = 0 ;
+scanf("%lld",&num);
+while(num > 0)
+{
+    r=r+num%8;
+    num/=8;
+}
+if(pal(r))
+{
+    printf("YES");
+}
+else
+printf("NO");
+}
