@@ -1,0 +1,68 @@
+/******************************************************************************
+
+String - Trianlge Border Pattern 
+The program must accept a string S as the input.
+The program must print the desired pattern as shown in the Example Input/Output section.
+Note: Length of S is always a multiple of 3. 
+Boundary Condition(s):
+3 <= Length of S <= 99
+Input Format: 
+The first line contains the string S.
+Output Format:
+The list of lines containing the desired pattern as shown in the Example Input/Output section.
+Example Input/Output 1:
+Input:
+abcdef
+Output:
+--a
+-f-b
+e-d-c
+Example Input/Output 2:
+Input:
+skillrack 
+Output:
+---s
+--k-k
+-c---i
+a-r-l-l
+
+********************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+#include<string.h>
+void space_(int i)
+{
+    while(i-- > 0)
+    {
+        printf("-");
+    }
+}
+int main()
+{
+char s[99];
+scanf("%s",s);
+int l=strlen(s);
+int space=l/3;
+int end=space;
+int e=l-1,ss=1,m=1;;
+space_(space);printf("%c",s[0]);printf("\n");
+
+for(int i=2;i<=end;i++)
+{
+    space_(--space);
+    printf("%c",s[e--]);
+    space_(m);m+=2;
+    printf("%c",s[ss++]);
+    printf("\n");
+}
+for(int i=1;i<=l/2;i++)
+{
+    if(i!=l/2)
+    printf("%c-",s[e--]);
+    else
+    printf("%c",s[e--]);
+}
+
+
+}
