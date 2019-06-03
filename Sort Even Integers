@@ -1,0 +1,62 @@
+/********************************************************************************
+
+
+Sort - Even Integers 
+The program must accept N integers as the input. 
+The program must sort only the even integers among the N integers in ascending order.
+The odd integers are retained in their same positions. Finally, the must print the modified values of N integers as the output.
+Boundary Condition(s):
+1 <= N <= 100 -999 <= Each integer value <= 999 
+Input Format:
+The first line contains the value of N.
+The second line contains N integers separated by space(s).
+Output Format:
+The first line contains the modified values of N integers separated by a space. 
+Example Input/Output 1:
+Input:
+5 
+56 45 78 20 91 
+Output:
+20 45 56 78 91 
+Explanation:
+The even integers are 56, 78 and 20 which are sorted (ascending order) in their positions. The odd integers are 45 and 91 which are
+retained in their same positions. Hence the output is 20 45 56 78 91 
+Example Input/Output 2:
+Input:
+8
+54 73 17 -6 -3 88 43 -90
+Output:
+-90 73 17 -6 -3 54 43 88
+
+
+********************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int N, *arr;
+scanf("%d",&N);
+arr = (int*)malloc(N * sizeof(int));
+for(int ind = 0; ind < N; ind++)
+scanf("%d",(arr+ind));
+for(int itr1 = 0; itr1 < N-1; itr1++)
+{ if(arr[itr1] % 2 == 0)
+{
+    for(int itr2 = itr1+1; itr2 < N; itr2++)
+    {
+        if(arr[itr2] % 2 == 0)
+        {
+            if(arr[itr1] > arr[itr2])
+            {
+                int temp = arr[itr1];
+                arr[itr1] = arr[itr2];
+                arr[itr2] = temp;
+            }
+        }
+    }
+}
+}
+for(int ind = 0; ind < N; ind++)
+printf("%d ",arr[ind]);
+}
