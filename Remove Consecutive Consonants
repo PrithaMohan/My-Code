@@ -1,0 +1,76 @@
+/*****************************************************************************
+
+Remove Consecutive Consonants 
+The program must accept a string S which contains only lower case alphabets as the input.
+The program must remove the consonants which are occurred consecutively. Then the program must print the modified string S as the output.
+Note: At least one vowel is always present in the string S.
+Boundary Condition(s):
+1 <= Length of S <= 100 
+Input Format:
+The first line contains the string S.
+Output Format:
+The first line contains the modified string value of S. 
+Example Input/Output 1:
+Input:
+elephants 
+Output:
+elea
+Explanation:
+The consonants p and h are have occurred consecutively so they are removed from the string "elephants". 
+Now the string becomes "eleants". The consonants n t and s are occurred consecutively so they are removed
+from the string "eleants". Now the string becomes "elea". Hence the output is elea
+Example Input/Output 2:
+Input:
+document 
+Output:
+docume
+
+******************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+int vowel(char ch)
+{
+    switch(ch)
+    {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':return 1;
+    }
+    return 0;
+}
+int main()
+{
+    char str[100];
+    scanf("%s",str);
+    int ind = 0;
+    while(str[ind] != '\0')
+    {
+        if(!vowel(str[ind]))
+        {
+         int count = 1, itr = ind+1;
+            while(str[itr] != '\0' && !vowel(str[itr]))
+                {
+                ++itr;
+                ++count;
+                }
+            if(count > 1)
+            {
+                for(int ctr = ind; ctr < ind+count; ctr++)
+                str[ctr] = ' ';
+            }
+            
+        }
+        ++ind;
+    }
+    ind = 0;
+    while(str[ind] != '\0')
+    {
+        if(str[ind] != ' ')
+        printf("%c",str[ind]);
+        ++ind;
+    }
+
+
+}
