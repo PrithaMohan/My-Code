@@ -1,0 +1,52 @@
+/**************************************************************************************
+
+Minimum Steps to 0
+The program must accept two integers N and K as the input.
+The program must print the minimum number of steps required to reach 0 from N based on the following steps.
+-If N is divisible by K then divide N by k.
+-If N is not divisible by K then decrement N by 1. 
+Boundary Condition(s):
+1 <= N <= 1000
+2 <= K <= 1000
+Input Format: 
+The first line contains the values of N and K separated by a space.
+Output Format:
+The first line contains the minimum number of steps required to reach 0 from N.
+Example Input/Output 1:
+Input:
+29 3
+Output:
+6
+Explanation:
+29 -> 28 -> 27 -> 9 -> 3 -> 1 -> 0
+Example Input/Output 2:
+Input:
+31 2
+Output:
+9
+
+**************************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    long long int N, K, steps = 0;
+scanf("%lld%lld",&N,&K);
+while(N > 0)
+{
+    if(N % K != 0 )
+    {
+        --N;
+        ++steps;
+    }
+    else
+    {
+        N /= K;
+        ++steps;
+    }
+}
+printf("%lld",steps);
+
+}
