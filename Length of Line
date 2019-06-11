@@ -1,0 +1,81 @@
+/***************************************************************************************************
+
+
+Length of Line 
+A paper is represented as a character matrix of size RxC where # represents blank space, * represents a dot and more than one *
+appearing continuously in a row or column represents a line. There is exactly one line drawn on the paper and there can be more than
+one dot. The program must accept the matrix as the input and print the length of the line on the paper as the output. The length is
+calculated by counting the number of * in the line. 
+Boundary Condition(s):
+1 <= R, C <= 100
+Input Format:
+The first line contains R and C separated by a space. 
+The next R lines contain C characters each. 
+Output Format:
+The first line contains the length of the line.
+Example Input/Output 1:
+Input:
+4 5
+####*
+#*#*#
+###*#
+###*#
+Output:
+3
+Explanation:
+The line is in the 4th column and in the rows 2 3 4.
+Hence its length 3 is printed.
+Example Input/Output 2:
+Input:
+6 5
+##*##
+#*#*#
+####*
+*##*#
+####*
+****#
+Output:
+4
+
+***************************************************************************************************/
+
+
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int r,c;
+scanf("%d%d",&r,&c);
+char s[r][c];
+for(int i=0;i<r;i++)
+{
+    scanf("%s",s[i]);
+}
+// for(int i=0;i<r;i++,printf("\n"))
+// for(int j=0;j<c;j++)
+// printf("%c",s[i][j]);
+int count = 1;
+for(int i=0;i<r;i++)
+{
+    for(int j=0;j<c-1;j++)
+    {
+        if(s[i][j] == '*' && s[i][j+1] == '*')
+        ++count;
+    }if(count > 1)
+    break;
+}if(count == 1)
+{
+    for(int j=0;j<c;j++)
+    {
+        for(int i=0;i<r-1;i++)
+        {
+            if(s[i][j] == '*' && s[i+1][j]=='*')
+            ++count;
+        }
+        if(count > 1)
+        break;
+    }
+}
+printf("%d",count);
+}
