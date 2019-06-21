@@ -1,0 +1,77 @@
+/***************************************************************************************************
+
+Signed Mirror Pattern 
+The program must accept an integer N as the input.
+The program must print the desired pattern as shown in the Example Input/Output section.
+Note: N is always a non-zero value.
+Boundary Condition(s):
+-100 <= N <= 100
+Input Format: 
+The first line contains the value of N.
+Output Format:
+The first N lines containing the desired pattern as shown in the Example Input/Output section.
+Example Input/Output 1:
+Input:
+4
+Output:
+1 * * *
+2 3 * *
+4 5 6 *
+7 8 9 10
+Example Input/Output 2:
+Input:
+-4
+Output:
+* * * 1
+* * 3 2
+* 6 5 4
+10 9 8 7
+
+***************************************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int number=1;
+void num(int n)
+{
+    while(n--)
+    printf("%d ",number++);
+}
+void star(int n)
+{
+    while(n--)
+    printf("* ");
+}
+void num_(int n, int i)
+{
+    while(i--)
+    printf("%d ",n--);
+}
+int main()
+{int N, star_, count = 0;
+scanf("%d",&N);
+int m[abs(N)][abs(N)];
+star_ = abs(N)-1;
+if(N<0)
+{
+   for(int i=1;i<=abs(N);i++)
+   {  
+       count = count + i;
+       star(star_--);
+       num_(count, i);
+       printf("\n");
+       
+   }
+}
+else if(N>0)
+{
+    for(int i=1;i<=N;i++)
+    {
+        num(i);
+        star(star_--);
+        printf("\n");
+    }
+}
+
+
+}
