@@ -1,0 +1,54 @@
+/***********************************************************************************************
+
+Matrix Border Pattern
+The program must accept an integer N as the input. The program must print the desired pattern as shown in the Example Input/Output section.
+Boundary Condition(s): 
+1 <= N <= 50 
+Input Format:
+The first line contains the value of N.
+Output Format: 
+The first N lines containing the desired pattern as shown in the Example Input/Output section.
+Example Input/Output 1:
+Input:
+4
+Output:
+1 2 3 4 
+2 * * 3 
+3 * * 2 
+4 3 2 1 
+Example Input/Output 2:
+Input:
+5
+Output:
+1 2 3 4 5
+2 * * * 4
+3 * * * 3
+4 * * * 2
+5 4 3 2 1
+
+***********************************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int N ;
+scanf("%d",&N);
+for(int i = 1; i <= N; i++)
+printf("%d ",i);
+int end = N-2,s = 2, e = N-1;
+for(int i = 0; i < end; i++)
+{
+    for(int j = 0; j < N; j++)
+    {
+        if(j == 0)
+        printf("%d ",s++);
+        else if(j == N-1)
+        printf("%d\n",e--);
+        else
+        printf("* ");
+    }
+}
+for(int i = N; i >= 1; i--)
+printf("%d ",i);
+}
