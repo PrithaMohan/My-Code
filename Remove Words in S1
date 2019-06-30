@@ -1,0 +1,65 @@
+/********************************************************************************************************
+
+Remove Words in S1 
+The program must accept two lines of string values with space S1 and S2 as the input. 
+The program must remove all the words in S2 from S1 and print the remaining words as the output.
+If all the words in S1 are present in S2 then the program must print -1 as the output. 
+Note:
+There is exactly one space between every two words. 
+Boundary Condition(s):
+1 <= Length of S1 and S2 <= 1000
+Input Format: 
+The first line contains S1.
+The second line contains S2.
+Output Format:
+The first line contains the words in S1 as per the given condition or -1.
+Example Input/Output 1:
+Input:
+join us for the party 
+party with us in home 
+Output:
+join for the 
+Explanation:
+The words in S2 appearing in S1 are "us" and "party". They are removed. 
+Hence the output is join for the
+Example Input/Output 2:
+Input:
+cycling is good 
+I like cycling and it is good 
+Output:
+-1
+
+********************************************************************************************************/
+
+import java.util.*;
+public class Hello {
+    public static int len1,len2;
+public static int is_present(String str , String s2[])
+{
+    for(int itr = 0; itr < len2; itr++)
+    {
+        if(str.equals(s2[itr]))
+        return 1;
+    }
+    return 0;
+}
+    public static void main(String[] args) {
+		//Your Code Here
+    Scanner ob = new Scanner(System.in);
+    String s1[] = ob.nextLine().split(" ");
+    String s2[] = ob.nextLine().split(" ");
+    len1 = s1.length;
+    len2 = s2.length;
+    int flag = 0;
+    for(int itr = 0; itr < len1; itr++)
+    {
+        if(is_present(s1[itr] , s2) == 0)
+        {
+            System.out.print(s1[itr]+" ");
+            flag = 1;
+        }
+    }
+    if(flag == 0)
+    System.out.print("-1");
+	}
+}
