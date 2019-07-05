@@ -1,0 +1,59 @@
+/******************************************************************************************************
+
+Substring Adjacent Characters
+The program must accept two string values S1 and S2 as the input.
+The program must form a string by concatenating each character which occurs just before and just after each occurrence of S2 in S1. 
+If there is no character before or after S2 then consider only the available character.
+If there is only one character between two occurrences of S2 then include the character for twice while forming the string.
+Finally, the program must print the string as the output. If there is no such character to form the string then the program must print -1
+as the output. 
+Boundary Condition(s):
+1 <= Length of S1 <= 1000 
+1 <= Length of S2 <= Length of S1 
+Input Format: 
+The first line contains the string S1.
+The second line contains the string S2.
+Output Format:
+The first line contains the string as per the given conditions or -1.
+Example Input/Output 1:
+Input:
+skllillrallckll 
+ll
+Output:
+kiirack 
+Explanation:
+There are four occurrences of "ll" in "skllillrallckll".
+The character which occurs just before and just after the first occurrence of ll are k and i.
+The character which occurs just before and just after the second occurrence of ll are i and r.
+The character which occurs just before and just after the third occurrence of ll are a and k. 
+The character which occurs just before the fourth occurrence of ll is k. So the string becomes "kiirack". 
+Hence the output is kiirack 
+Example Input/Output 2:
+Input:
+independence 
+defence
+Output:
+-1
+
+******************************************************************************************************/
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+		//Your Code Here
+Scanner ob = new Scanner(System.in);
+int f=0;
+String str = ob.next();
+String sub = ob.next();
+int end = str.length() - sub.length();
+for(int i = 1; i < end; i++)
+{
+    if((str.substring(i,i+sub.length())).equals(sub) && (i+sub.length()<str.length()))
+    { 
+        System.out.print(str.charAt(i-1)+""+str.charAt(i+sub.length()));
+        f = 1;
+    }
+}if(f == 0)
+System.out.println(-1);
+	}
+}
