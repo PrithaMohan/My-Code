@@ -1,0 +1,61 @@
+/******************************************************************************************************************
+String Formed by using Substring
+The program must accept a string S as the input. The program must print YES if S is formed by repeatedly concatenating a substring of S.
+Else the program must print NO as the output. 
+Boundary Condition(s):
+2 <= Length of S <= 1000
+Input Format:
+The first line contains the string S.
+Output Format:
+The first line contains either YES or NO. 
+Example Input/Output 1:
+Input:
+abcabcabc
+Output:
+YES
+Explanation:
+The string "abcabcabc" is formed by using the substring "abc".
+Hence the output is YES
+Example Input/Output 2:
+Input:
+aabbaabbaabb
+Output:
+YES
+Explanation:
+The string "aabbaabbaabb" is formed by using the substring "aabb". Hence the output is YES
+Example Input/Output 3:
+Input:
+pqrspqrt 
+Output:
+NO
+******************************************************************************************************************/
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+		//Your Code Here
+		Scanner ob = new Scanner(System.in);
+		String s = ob.next();int f =0;
+		for(int i=0;i<=s.length()/2;i++)
+		{int k=0;
+		    String s_[] = s.split(s.substring(0,i));
+		    for(int j = 1; j<s_.length;j++)
+		    {
+		        if(s_[0].equals(s_[j]) )
+		         {++k;
+		            
+		         }
+		         else
+		         break;
+		    }if(k >= s_.length-1)
+		      {
+		          System.out.println("YES");
+		          f=1;
+		          break;
+		      }
+		}
+		
+if(f==0)
+System.out.println("NO");
+	}
+}
