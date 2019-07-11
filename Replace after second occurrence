@@ -1,0 +1,95 @@
+/********************************************************************************************************
+Replace after Second Occurrence
+The program must accept an integer matrix of size NxN and an integer K as the input.
+The program must replace all the integers in the matrix which are present below the second occurrence of the integer K in each column
+by '*' and print the matrix as the output.
+Boundary Condition(s):
+1 <= N <= 100 
+1 <= K, Each integer value <= 10^9 
+Input Format:
+The first line contains N and K separated by a space.
+The next N lines contain N integers each separated by a space.
+Output Format:
+The first N lines contain N integers each separated by a space.
+Example Input/Output 1:
+Input:
+4 25
+11 25 21 25
+14 25 17 26
+25 36 15 25
+25 10 18 15
+Output:
+11 25 21 25
+14 25 17 26
+25 * 15 25
+25 * 18 *
+Explanation:
+There are three columns (1, 2 and 4) having at least 2 occurrences of 25 in the matrix.
+There are only two columns (2 and 4) which have elements after the second occurrence of 25. 
+The elements after the second occurrence of 25 in the columns 2 and 4 are replaced by *. 
+Example Input/Output 2:
+Input:
+6 13
+13 27 13 13 10 44
+31 13 45 22 40 13
+42 13 48 13 13 28
+13 43 17 19 45 41
+30 16 19 30 13 45
+16 42 31 18 40 13
+Output:
+13 27 13 13 10 44
+31 13 45 22 40 13
+42 13 48 13 13 28
+13 * 17 * 45 41
+* * 19 * 13 45
+* * 31 * * 13
+
+********************************************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int N,K,row,col;
+scanf("%d%d",&N,&K);
+int m[N][N];
+for(row = 0; row < N; row++)
+{
+    for(col = 0; col < N; col++)
+    {
+        scanf("%d",&m[row][col]);
+    }
+}
+for(col = 0; col < N; col++)
+{
+    int occurence = 0,f = 0;
+    for(row =0; row < N; row++)
+    { if(f == 0)
+        if(m[row][col] == K)
+            ++occurence;
+        if(occurence == 2)
+        {
+            f = 1;
+            ++occurence;
+            continue;
+        }
+        if(f == 1)
+        {
+            m[row][col] = -1;
+        }
+        
+    }
+    
+}
+for(row = 0; row < N; row++)
+{
+    for(col = 0; col < N; col++)
+    {
+        if(m[row][col] != -1)
+            printf("%d ",m[row][col]);
+        else
+            printf("* ");
+    }
+    printf("\n");
+}
+}
