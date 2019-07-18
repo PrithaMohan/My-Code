@@ -1,0 +1,94 @@
+/****************************************************************************************************
+Reverse & Sort Column
+The program must accept an integer matrix of size RxC as the input.
+The program must reverse each integer in the matrix and then the program must sort the integers in each column of the matrix in ascending
+order. Finally, the program must print the modified matrix as the output.
+Boundary Condition(s):
+2 <= R, C <= 100 
+Input Format:
+The first line contains two integers R and C separated by a space.
+The next R lines contain C integers separated by space(s).
+Output Format:
+The first R lines contain C integers separated by a space. 
+Example Input/Output 1:
+Input:
+3 4
+19 23 89 22
+87 34 45 38
+100 23 47 29
+Output:
+1 32 54 22
+78 32 74 83
+91 43 98 92
+Explanation:
+After reversing each integer, the matrix becomes 
+91 32 98 22
+78 43 54 83
+1 32 74 92
+After sorting each column, the matrx becomes 
+1 32 54 22
+78 32 74 83
+91 43 98 92
+Example Input/Output 2:
+Input:
+5 3
+26 75 23
+14 90 25
+92 48 95
+80 62 91
+54 39 24
+Output:
+8 9 19
+29 26 32
+41 57 42
+45 84 52
+62 93 59
+****************************************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+int reverse(int N)
+{int rev = 0;
+    while(N)
+    {
+        rev = rev*10 + N%10;
+        N /= 10;
+    }
+    return rev;
+}
+int main()
+{
+int R,C,row,col,Num;
+scanf("%d%d",&R,&C);
+int mat[R][C];
+for(row = 0; row < R; row++)
+{
+    for(col = 0; col < C; col++)
+    {
+        scanf("%d",&Num);
+        mat[row][col] = reverse(Num);
+    }
+}
+for(col = 0; col < C; col++)
+{
+    for(row = 0; row < R-1; row++)
+    {
+        for(int Row = row+1; Row < R; Row++)
+        {
+            if(mat[row][col] > mat[Row][col])
+            {
+                mat[row][col] = mat[row][col] ^ mat[Row][col];
+                mat[Row][col] = mat[row][col] ^ mat[Row][col];
+                mat[row][col] = mat[row][col] ^ mat[Row][col];
+            }
+        }
+    }
+}
+for(row = 0; row < R; row++)
+{
+    for(col = 0; col < C; col++)
+    {
+        printf("%d ",mat[row][col]);
+    }printf("\n");
+}
+
+}
