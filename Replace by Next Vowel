@@ -1,0 +1,66 @@
+/*********************************************************************************************************************
+Replace by Next Vowel
+The program must accept a string S and an alphabet CH as the input.
+The program must replace all the occurrences of the alphabet CH by the next occurring vowel in the string S.
+Then the program must print the modified string as the output.
+Note:
+If there is no vowel after the alphabet CH then CH must be printed as it is.
+Boundary Condition(s):
+1 <= Length of the string <= 1000 
+Input Format: 
+The first line contains the string S and an alphabet CH separated by a space.
+Output Format: 
+The first line contains the modified string. 
+Example Input/Output 1:
+Input:
+teleportation t
+Output:
+eeleporaaiion 
+Example Input/Output 2:
+Input:
+accuracy c
+Output:
+auuuracy
+*********************************************************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+int pos;
+char str[1000];
+char get_vowel(int ind)
+{
+    while(str[ind] != '\0')
+    {
+        switch(str[ind])
+        {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':return str[ind];
+        }++ind;
+    }
+    return '0';
+}
+int main()
+{
+    char ch;
+    scanf("%s",str);getchar();
+    scanf("%c",&ch);
+    int ind = 0,len = strlen(str);
+    for(;ind < len-1; ind++)
+    {
+        if(str[ind] == ch)
+        {
+            char t = get_vowel(ind+1);
+       //     printf("%c ",t);
+            if(t != '0')
+            str[ind] = t;
+            else
+            break;
+        }
+    }
+    printf("%s",str);
+    
+    
+}
