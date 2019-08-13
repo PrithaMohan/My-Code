@@ -1,0 +1,44 @@
+/************************************************************************************************************
+Binary Representation - Fibonacci Series 
+The program must accept a positive integer N as the input. The program must consider the first N numbers in the Fibonacci series.
+For each number M in the Fibonacci series, the program must print the binary representation of M as the output.
+Boundary Condition(s):
+1 <= N <= 45 
+Input Format:
+The first line contains the integer N.
+Output Format: 
+The first line contains the binary representation of the first N numbers in the Fibonacci series separated by a space.
+Example Input/Output 1:
+Input:
+6 
+Output:
+0 1 1 10 11 101 
+Explanation:
+The first 6 numbers in the fibonacci series are 0 1 1 2 3 5.
+So the binary representation of the fibonacci series is 0, 1, 1, 10, 11, 101.
+Hence the output is 0 1 1 10 11 101.
+ExampleI Input/Output 2:
+Input:
+3
+Output:
+0 1 1
+************************************************************************************************************/
+
+import java.util.*;
+public class Hello {
+
+    public static void main(String[] args) {
+		//Your Code Here
+Scanner ob = new Scanner(System.in);
+int N = ob.nextInt();
+int x1 = -1,x2 = 1,x3;
+for(int itr = 1; itr <= N; itr++)
+{
+    x3 = x1+x2;
+    String bin = Integer.toBinaryString(x3);
+    System.out.print(bin+" ");
+    x1 = x2;
+    x2 = x3;
+}
+	}
+}
