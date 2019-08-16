@@ -1,0 +1,59 @@
+/******************************************************************************************************************
+Twisted Prime 
+The program must accept an integer N as the input. The program must print YES if N is a twisted prime number.
+Else the program must print NO as the output. A number is said to be twisted prime if it is a prime number and reverse of the number is
+also a prime number.
+Boundary Condition(s):
+1 <= N <= 10^16
+Input Format: 
+The first line contains the value of N.
+Output Format:
+The first line contains either YES or NO.
+Example Input/Output 1:
+Input:
+97 
+Output:
+YES
+Explanation:
+97 is a prime number. 
+The reverse of 97 is 79. So 79 is also a prime number.
+Hence the output is YES
+Example Input/Output 2:
+Input:
+34
+Output:
+NO
+******************************************************************************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+int prime(long int Num)
+{
+    for(int itr = 2; itr <= sqrt(Num); itr++)
+    {
+        if(Num%itr == 0)
+        return 0;
+    }
+    return 1;
+}
+long int reverse(long int Num)
+{
+    long int rev = 0;
+    while(Num)
+    {
+        rev = rev*10+Num%10;
+        Num/=10;
+    }
+    return rev;
+}
+int main()
+{
+    long int Num,rev = 0;
+    scanf("%ld",&Num);
+    rev = reverse(Num);
+    if(prime(Num) && prime(rev))
+    printf("YES");
+    else
+    printf("NO");
+
+}
