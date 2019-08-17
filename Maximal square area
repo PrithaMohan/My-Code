@@ -1,0 +1,105 @@
+/******************************************************************************
+input:
+N denotes number of strings.
+Next 'N' lines contains the set strings.
+output:
+maximum area of the sub- square matrix which contains all ones.
+
+sample i/p 1:
+3
+10101
+11111
+11101
+sample o/p 1:
+4
+sample i/p 2:
+4
+11111
+11111
+11111
+11111
+sample o/p 2:
+16
+sample i/p 3:
+4
+000
+000
+000
+sample o/p 3:
+0
+sample i/p 4:
+2
+10
+10
+sample o/p 4:
+1
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner ob = new Scanner(System.in);
+		int N = ob.nextInt() , itr, row, col,column;
+		String s_arr[] = new String[N];
+		for(itr = 0; itr < N; itr++)
+		s_arr[itr] = ob.next();
+		char mat[][] = new char[N][s_arr[0].length()];
+		column = s_arr[0].length();
+		for(row = 0; row < N; row++)
+		{
+		    mat[row] = s_arr[row].toCharArray();
+		}
+	    int Max = 0 , size = 2;
+	  // System.out.println("row :"+N+" col :"+column);
+	  while(size < column && size < N)
+	  {int f = 0,val=0;
+	      for(row = 0; row <= N-size; row++)
+	        {
+	      
+	         for(col = 0; col <= column-size; col++)
+	            {
+	                //System.out.println("size :"+size);
+	                int count = 0;
+	                for(int i = row; i < row+size; i++)
+	                    {
+	                        for(int j = col; j < col+size; j++)
+	                            {
+	                                if(mat[i][j] == '1')
+	                                ++count;
+	                            }
+	                    }
+	                    if(count == size*size)
+	                    {
+	                        f=1;
+	                        val = count;
+	                        break;
+	                    }
+	            }
+	            if(f==1)
+	            {
+	                if(val > Max)
+	                Max = val;
+	            }
+	        }
+	  ++size;
+	  }
+	  if(Max!=0)
+System.out.println(Max);
+else
+{int flag = 0;
+    for(int ind = 0; ind < s_arr.length; ind++)
+    {
+        if(s_arr[ind].contains("1"))
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if(flag == 1)
+    System.out.println(1);
+    else
+    System.out.println(Max);
+    
+}
+	}
+}
