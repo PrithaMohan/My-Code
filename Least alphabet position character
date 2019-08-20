@@ -1,0 +1,49 @@
+/**************************************************************************************************************
+Least Alphabet Position Character
+The program must accept N strings as the input. The program must print the least alphabet position character in each string as the output.
+Note: Only lowercase alphabets.
+Boundary Condition(s):
+1 <= N <= 100 
+1 <= Length of S <= 100 
+Input Format:
+The first line contains the value of N. 
+The second line contains the values of string S.
+Output Format:
+The first line contains the least alphabet position character in each string separated by a space(s).
+Example Input/Output 1:
+Input:
+3
+apple tree owl 
+Output:
+a e l
+Explanation:
+In the word apple, least alphabet position character is a. In the word tree, least alphabet position character is e.
+In the word owl, least alphabet position character is l. Hence the output is a e l
+Example Input/Output 2:
+Input:
+5
+greek india zoo lion bull
+Output:
+e a o i b
+**************************************************************************************************************/
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner ob = new Scanner(System.in);
+		int n = ob.nextInt();
+		String s;
+		for(int i=0;i<n;i++)
+		{
+		    s = ob.next();
+		    int min = 100000;
+		    for(int j=0;j<s.length();j++)
+		    {
+		        if(s.charAt(j)<min)
+		        min = s.charAt(j);
+		    }
+		    System.out.format("%c ",min);
+		}
+	}
+}
