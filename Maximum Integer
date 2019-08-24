@@ -1,0 +1,63 @@
+/***********************************************************************************************************
+Maximum Integer
+The program must accept N integers and an integer K as the input.
+The program must find the maximum integer among N integers as X. 
+Then the program must print X if the value of all other integer values when multiplied by K is less than or equal to X. 
+Else the program must print -1 as the output.
+Boundary Condition(s):
+2 <= N <= 10^5 
+1 <= K <= 100 
+Input Format:
+The first line contains the two integers N and K separated by a space.
+The second line contains N integers separated by space(s).
+Output Format: 
+The first line contains either the maximum integer or -1.
+Example Input/Output 1:
+Input:
+5 3 
+4 1 0 12 3 
+Output:
+12
+Explanation:
+The maximum integer is 12. All the other integers when multiplied by 3 are 12, 3, 0 and 9.
+Here all other integers are less than or equal to 12. Hence the output is 12
+Example Input/Output 2:
+Input:
+6 5
+10 20 5 4 80 2
+Output:
+-1
+***********************************************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+long int N,K;
+scanf("%ld%ld",&N,&K);
+int a[N],f=0,max=0,max_,i;
+for(i=0;i<N;i++)
+{
+    scanf("%d",&a[i]);
+    if(a[i]>max)
+   {
+       max = a[i];
+    max_ = i;
+   }
+}
+for(i=0;i<N;i++)
+{
+    if(i == max_)
+    continue;
+    if(!(a[i]*K <= max))
+    {
+        f=1;
+        break;
+    }
+}
+if(f == 0)
+printf("%d",max);
+else
+printf("-1");
+
+}
