@@ -1,0 +1,62 @@
+/************************************************************************************************
+Minimum Sum - Left or Right 
+The program must accept a list of unique positive integers and a positive integer X as the input. 
+The program must find the sum of integers left to integer X then the program must find the sum of integers right to integer X.
+The program must print the minimum sum value among the obtained two sum values as the output. 
+If there is no integer before or after integer X, the program must print 0 as the minimum sum value.
+Note:
+The integer X is always present in the given list of integers.
+Boundary Condition(s):
+1 <= Each integer value <= 10^5
+Input Format: 
+The first line contains the list of integers separated by space(s).
+The second line contains the positive integer X.
+Output Format: 
+The first line contains the minimum sum value based on the given conditions.
+Example Input/Output 1:
+Input:
+1 2 3 4 5 6 7 8 9
+5 
+Output:
+10
+Explanation:
+The integers left to integer 5 are 1 2 3 and 4.
+So their sum is 10. The integers right to integer 5 are 6 7 8 and 9.
+So their sum is 30. Here the minimum sum is 10. So 10 is printed as the output.
+Example Input/Output 2:
+Input:
+9 1 2 8 7 3 
+7
+Output:
+3
+************************************************************************************************/
+import java.util.*;
+public class Hello {
+
+    public static void main(String[] args) {
+		//Your Code Here
+Scanner ob = new Scanner(System.in);
+String s_arr[] = ob.nextLine().split(" ");
+int N = ob.nextInt();
+int arr[] = new int[s_arr.length];
+int len = arr.length;
+int sum = 0;
+for(int i = 0; i < len; i++)
+{
+    arr[i] = Integer.parseInt(s_arr[i]);
+    sum += arr[i];
+}
+int pos = 0,i,left = 0,right = 0;
+for(i = 0; i < len; i++)
+{
+    if(arr[i] == N)
+    break;
+    left+=arr[i];
+}
+right = sum-left-N;
+if(left < right)
+System.out.println(left);
+else
+System.out.println(right);
+	}
+}
